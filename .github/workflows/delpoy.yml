@@ -49,9 +49,17 @@ jobs:
                   restore-keys: |
                       ${{ runner.OS }}-build-
                       ${{ runner.OS }}-
+                      
+            # DAVODA 패키지 설치를 위한 .npmrc authToken 추가
+            - name: .npmrc add authToken
+              run: |
+                  touch .npmrc
+                  echo -e '\n//npm.pkg.github.com/:_authToken=${{ secrets.API_KEY }}' >> .npmrc
+                  echo '@deegda:registry=https://npm.pkg.github.com/' >> .npmrc
+                  cat .npmrc
 
             - name: Install Packages
-              run: yarn install
+              run: yarn
 
             # - name: Make Zip File
             #   run: zip -r ./$GITHUB_SHA.zip
