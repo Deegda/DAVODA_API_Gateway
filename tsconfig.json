@@ -1,27 +1,30 @@
 {
-  "compilerOptions": {
-      "module": "commonjs",
-      "moduleResolution": "node",
-      "declaration": true,
-      "removeComments": true,
-      "emitDecoratorMetadata": true,
-      "experimentalDecorators": true,
-      "allowSyntheticDefaultImports": true,
-      "target": "es2017",
-      "sourceMap": true,
-      "outDir": "./dist",
-      "baseUrl": "./",
-      "incremental": true,
-      "skipLibCheck": true,
-      "strict": true,
-      "noImplicitAny": true,
-      "forceConsistentCasingInFileNames": false,
-      "noFallthroughCasesInSwitch": false,
-      "typeRoots": [
-          "./node_modules/@types"
-      ],
-      "paths": {
-          "@src": ["./src"]
-      }
-  }
+    "compilerOptions": {
+        "module": "commonjs",
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "moduleResolution": "node",
+        "declaration": true,
+        "removeComments": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "allowSyntheticDefaultImports": true,
+        "strictPropertyInitialization": false,
+        "target": "es2017",
+        "sourceMap": true,
+        "outDir": "./dist",
+        "baseUrl": "./",
+        "paths": {
+            "@auth/*": ["src/auth/*"],
+            "@src": ["./src"],
+        },
+        "incremental": true,
+        "skipLibCheck": true,
+        "strict": true,
+        "noImplicitAny": true,
+        "forceConsistentCasingInFileNames": false,
+        "noFallthroughCasesInSwitch": false,
+        "typeRoots": ["./node_modules/@types"],
+        "allowJs": true
+    }
 }

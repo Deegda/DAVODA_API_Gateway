@@ -1,8 +1,24 @@
+import { Module } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+import { ExpressAdapter } from '@nestjs/platform-express';
+import express from 'express';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { AuthModule } from '@auth/auth.module';
+import { version } from '../package.json';
+
+@Module({
+    imports: [AuthModule]
+})
+class AppModule {}
 
 async function bootstrap() {
-    const app = await NestFactory.create(AppModule);
-    await app.listen(8080);
+    const expressApp = express();
+    const app = await NestFactory.create(AppModule, new ExpressAdapter(expressApp));
+
+    const options = new DocumentBuilder().setTitle('API Docs').setDescription('Davoda API Docs').setVersion(version).build();
+    const document = SwaggerModule.createDocument(app, options);
+    SwaggerModule.setup('api/v1', app, document);
+
+    await app.listen(3000);
 }
 bootstrap();
