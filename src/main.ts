@@ -3,7 +3,7 @@ import { NestFactory } from '@nestjs/core';
 import { ExpressAdapter } from '@nestjs/platform-express';
 import express from 'express';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { AuthModule } from '@auth/auth.module';
+import { AppModule as AuthModule } from '@auth/app.module';
 import { version } from '../package.json';
 
 @Module({
